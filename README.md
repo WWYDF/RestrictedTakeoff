@@ -1,3 +1,4 @@
+# Restricted Takeoff
 > [!Note]
 > Prevents the lobby from leaving the moon/pulling the lever until midnight. 
 Once you land, you’re stuck the entire day to get scrap. Good luck, interns.
