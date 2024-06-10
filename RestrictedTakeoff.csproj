@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+
+		<!--
+		Use the following property to set your preferred r2modman profile
+		-->
+		<Profile>RestrictedTakeoff</Profile>
+
+		<TargetFrameworks>netstandard2.1;net472</TargetFrameworks>
+		<DebugType>None</DebugType>
+		<AssemblyName>$(Profile)</AssemblyName>
+		<RootNamespace>$(SolutionName)</RootNamespace>
+		<BepInEx>$(AppData)\r2modmanPlus-local\LethalCompany\profiles\$(Profile)\BepInEx</BepInEx>
+		<BuildDirectory>$(BepInEx)\plugins\$(SolutionName)\</BuildDirectory>
+		<OutputPath>$(BuildDirectory)</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+		<Delete Files="$(OutputPath)$(AssemblyName).deps.json" />
+	</Target>
+	<ItemGroup>
+		<Reference Include=".\unity-libs\*.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\0Harmony.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\BepInEx.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\BepInEx.Harmony.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\MonoMod.Utils.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\MonoMod.RuntimeDetour.dll" Private="false" />
+		<Reference Include="$(BepInEx)\core\BepInEx.Preloader.dll" Private="false" />
+		<Reference Include="$(BepInEx)\plugins\DrFeederino-LC_API_V50\LC_API_V50.dll" Private="false" />
+	</ItemGroup>
+</Project>
